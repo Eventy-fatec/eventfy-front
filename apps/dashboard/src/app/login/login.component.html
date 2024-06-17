@@ -1,55 +1,25 @@
-<!-- <div class="main-login">
-    <div class="left-login">
-        <h1>Faça login</h1>
-    </div>
-    <div class="right-login">
-        <div class="card-login">
-            <h1>Login</h1>
-            <div class="textfield">
-                <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" placeholder="Usuário">
-            </div>
-            <div class="textfield">
-                <label for="senha">Senha</label>
-                <input type="password" name="senha" placeholder="Senha">
-            </div>
-            <button class="btn-login">Login</button>
-        </div>
-    </div>
-</div>
-https://www.youtube.com/watch?v=PlpM2LJWu-s
-https://www.youtube.com/watch?v=zWw0npNDkVM -->
-<div class="container" id="container">
+<div class="container" [class.active]="isActive">
     <div class="form-container sign-up">
-        <form>
-            <h1>Create Account</h1>
-            <div class="social-icons">
-                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email for registeration</span>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button>Sign Up</button>
+        <form [formGroup]="form">
+            <img style="width: 100px; height: 50px; object-fit: cover;" src="../../assets/images/eventfy.png" (click)="goToHome()"/>
+            <input type="text" placeholder="Name" formControlName="name">
+            <input type="email" placeholder="Email" formControlName="email">
+            <input type="password" placeholder="Password" formControlName="password">
+            <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+            <input type="text" placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+            <input type="text" placeholder="Cellphone" mask="(00) 00000 0000"formControlName="cellphone">
+            <input type="date" placeholder="Birthday" formControlName="birthday">
+            <button [class.disabled]="!(form.valid && isPasswordEqual)" (click)="onSignUp()" [disabled]="!(form.valid && isPasswordEqual)">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in">
         <form>
-            <h1>Sign In</h1>
-            <div class="social-icons">
-                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email password</span>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
+            <img style="" src="../../assets/images/eventfy.png" (click)="goToHome()" />
+            <span>Use your cpf and password</span>
+            <input type="text" placeholder="cpf" [(ngModel)]="cpf" [ngModelOptions]="{ standalone: true }" mask="000.000.000-00">
+            <input type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{ standalone: true }"/>
             <a href="#">Forget Your Password?</a>
-            <button>Sign In</button>
+            <button [class.disabled]="!(cpf && password)" (click)="onLogin()" [disabled]="!(cpf && password)">Sign In</button>
         </form>
     </div>
     <div class="toggle-container">
@@ -57,12 +27,12 @@ https://www.youtube.com/watch?v=zWw0npNDkVM -->
             <div class="toggle-panel toggle-left">
                 <h1>Welcome Back!</h1>
                 <p>Enter your personal details to use all of site features</p>
-                <button class="hidden" id="login">Sign In</button>
+                <button class="hidden" (click)="isActive = false">Sign In</button>
             </div>
             <div class="toggle-panel toggle-right">
                 <h1>Hello, Friend!</h1>
                 <p>Register with your personal details to use all of site features</p>
-                <button class="hidden" id="register">Sign Up</button>
+                <button class="hidden" (click)="isActive = true">Sign Up</button>
             </div>
         </div>
     </div>

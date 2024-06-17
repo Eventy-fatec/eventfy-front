@@ -1,164 +1,20 @@
-// body{
-//     margin: 0;
-//     font: 'Noto Sans', sans-serif;
-// }
-
-// body * {
-//     box-sizing: border-box;
-// }
-
-// .main-login{
-//     width: 100vw;
-//     height: 100vh;
-//     background: #201b2c;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// .left-login{
-//     width: 50vw;
-//     height: 50vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: column;
-// }
-
-// .left-login > h1{
-//     font-size: 3vw;
-//     color: #77ffc0;
-// }
-
-// .left-login-image{
-//     width: 35vw;
-// }
-
-// .right-login{
-//     width: 50vw;
-//     height: 50vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// .card-login{
-//     width: 60%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: column;
-//     padding: 30px 35px;
-//     background: #2f2841;
-//     border-radius: 20px;
-//     box-shadow: 0px 10px 40px #00000056;
-// }
-
-// .card-login > h1{
-//     color: #00ff88;
-//     font-weight: 800;
-//     margin: 0;
-// }
-
-// .textfield{
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     justify-content: center;
-//     margin: 10px 0px;
-//     width: 100%;
-// }
-
-// .textfield > input{
-//     width: 100%;
-//     border: none;
-//     border-radius: 10px;
-//     padding: 15px;
-//     background: #514869;
-//     color: #f0ffffde;
-//     font-size: 12pt;
-//     box-shadow: 0px 10px 40px #00000056;
-//     outline: none;
-//     box-sizing: border-box;
-// }
-
-// .textfield > label {
-//     color: #f0ffffde;
-//     margin-bottom: 10px;
-// }
-
-// .textfield > input::placeholder{
-//     color: #f0ffff94;
-// }
-
-// .btn-login{
-//     width: 100%;
-//     padding: 16px 0px;
-//     margin: 25px;
-//     border: none;
-//     border-radius: 8px;
-//     outline: none;
-//     text-transform: uppercase;
-//     font-weight: 800;
-//     letter-spacing: 3px;
-//     color: #2b134b;
-//     background: #00ff88;
-//     cursor: pointer;
-//     box-shadow: 0px 10px 40px -12px #00ff8052;
-// }
-
-// @media only screen and (max-width: 950px){
-//     .card-login{
-//         width: 85%;
-//     }
-// }
-
-// @media only screen and (max-width: 600px){
-//     .main-login{
-//         display: flex;
-//         flex-direction: column;
-//     }
-
-//     .left-login > h1{
-//         display: none;
-//     }
-
-//     .left-login{
-//         width: 100%;
-//         height: auto;
-//     }
-
-//     .right-login{
-//         width: 100%;
-//         height: auto;
-//     }
-
-//     .left-login-image{
-//         width: 50vw;
-//     }
-
-//     .card-login{
-//         width: 90%;
-//     }
-// }
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:host {
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #ffcbc9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
-}
-
-body {
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
 }
 
 .container {
@@ -191,7 +47,7 @@ body {
 }
 
 .container button {
-    background-color: #512da8;
+    background-color: #dc143c;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -209,6 +65,10 @@ body {
     border-color: #fff;
 }
 
+.container button.disabled {
+    opacity: 0.7;
+}
+
 .container form {
     background-color: #fff;
     display: flex;
@@ -222,7 +82,7 @@ body {
 .container input {
     background-color: #eee;
     border: none;
-    margin: 8px 0;
+    margin: 4px 0;
     padding: 10px 15px;
     font-size: 13px;
     border-radius: 8px;
@@ -243,6 +103,13 @@ body {
     z-index: 2;
 }
 
+.sign-in img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 .container.active .sign-in {
     transform: translateX(100%);
 }
@@ -252,6 +119,13 @@ body {
     width: 50%;
     opacity: 0;
     z-index: 1;
+}
+
+.sign-up img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .container.active .sign-up {
@@ -307,9 +181,9 @@ body {
 }
 
 .toggle {
-    background-color: #512da8;
+    background-color: #dc143c;
     height: 100%;
-    background: linear-gradient(to right, #5c6bc0, #512da8);
+    background: linear-gradient(to left, #000000b0, #dc143c);
     color: #fff;
     position: relative;
     left: -100%;
