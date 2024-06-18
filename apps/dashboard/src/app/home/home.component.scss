@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
-
 :host {
   font-family: "Open Sans", sans-serif;
   color: #0c0c0c;
@@ -12,22 +9,6 @@
   padding: 90px 0;
 }
 
-.layout_padding2 {
-  padding: 75px 0;
-}
-
-.layout_padding2-top {
-  padding-top: 75px;
-}
-
-.layout_padding2-bottom {
-  padding-bottom: 75px;
-}
-
-.layout_padding-top {
-  padding-top: 90px;
-}
-
 .layout_padding-bottom {
   padding-bottom: 90px;
 }
@@ -36,7 +17,6 @@ h2 {
   font-family: "Teko", sans-serif;
   color: #DC143C;
 }
-
 
 
 .heading_container {
@@ -1013,7 +993,6 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
-/*# sourceMappingURL=style.css.map */
 
 @media (max-width: 1300px) {}
 
