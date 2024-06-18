@@ -993,6 +993,20 @@ a:focus {
   justify-content: space-between !important;
 }
 
+.no-events{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+
+  span {
+    font-size: 20px;
+    color: #dc143c;
+    font-weight: bold;
+  }
+}
+
 @media (max-width: 1300px) {
 }
 

@@ -23,9 +23,12 @@
                 >Eventos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"
+                <a 
+                class="nav-link"
                 [routerLink]="['/home']"
-                  fragment="register">Cadastrar Eventos</a>
+                fragment="register">
+                  Cadastrar Eventos
+                </a>
               </li>
             </ul>
             <div class="user_option">
@@ -41,7 +44,7 @@
                 </button>
               </form>
                 @if (hasUser){
-                  <button  class="order_online">
+                  <button  class="order_online" disabled>
                     Meu Ingressos
                   </button>
                 } @else {
@@ -71,7 +74,10 @@
                       Aqui na Eventfy, você tem uma infraestrutura robusta para venda de ingressos! Faça seu evento com o Byma e turbine o seu canal de vendas digital!
                     </p>
                     <div class="btn-box">
-                      <a class="nav-link black" href="#register">
+                      <a 
+                      class="nav-link black"
+                      [routerLink]="['/home']"
+                      fragment="register">
                         Comece a vender ingressos
                       </a>
                     </div>
@@ -94,42 +100,46 @@
         </h2>
       </div>
       <div class="filters-content">
-        <div class="row grid">
-          <div class="col-sm-6 col-lg-4 all jul">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious jul
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$30,00
-                    </h6>
-                    <h6>
-                      19/07/2024
-                    </h6>
-                    <a href="">
-
-                    </a>
+        @if(events.length > 0){
+          @for (event of events; track event.id){
+            <div class="row grid" >
+              <div class="col-sm-6 col-lg-4 all jul">
+                <div class="box">
+                  <div>
+                    <div class="img-box">
+                      <img src="" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h5>
+                        {{ event.title}}
+                      </h5>
+                      <p>
+                        {{ event.description }}
+                      </p>
+                      <div class="options">
+                        <h6>
+                          {{ event.openingDate | date: 'dd/MM/yyyy'}}
+                        </h6>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          }
+        } @else {
+          <div class="no-events" >
+            <span>Nenhum evento encontrado!</span>
           </div>
+        }
+      </div>
+      @if(events.length > 10){
+        <div class="btn-box">
+          <button>
+            See more
+          </button>
         </div>
-      </div>
-      <div class="btn-box">
-        <button>
-          See more
-        </button>
-      </div>
+      }
     </div>
   </section>
   <!-- /Events Section-->
@@ -150,35 +160,35 @@
                 <span>Descrição</span>
                 <input type="text" class="form-control" formControlName="description"/>
                 <span>CEP</span>
-                <input type="text" class="form-control" formControlName="cep"/>
+                <input type="text" class="form-control" formControlName="cep" mask="00000-000"/>
                 <span>Data de inicio</span>
-                <input type="date" class="form-control" formControlName="startDate"/>
+                <input type="date" class="form-control" formControlName="openingDate"/>
                 <span>Data de termino</span>
-                <input type="date" class="form-control" formControlName="endDate"/>
+                <input type="date" class="form-control" formControlName="closingDate"/>
                 <span>Horário de inicio</span>
-                <input type="text" class="form-control" formControlName="startTime"/>
+                <input type="text" class="form-control" formControlName="startTime" mask="00:00"/>
                 <span>Horário de saída</span>
-                <input type="text" class="form-control" formControlName="endTime"/>
+                <input type="text" class="form-control" formControlName="endTime" mask="00:00"/>
               </div>
           </div>
-          @if(form.value.cep != ''){
-            <div class="col-md-6">
-              <div class="form_container">
-                <span>Número da rua</span>
-                <input type="text" class="form-control" formControlName="numberStreet"/>
-                <span>Rua</span>
-                <input type="text" class="form-control" formControlName="street"/>
-                <span>Cidade</span>
-                <input type="text" class="form-control" formControlName="city"/>
-                <span>Estado</span>
-                <input type="text" class="form-control" formControlName="state"/>
+            @if(form.value.cep != ''){
+              <div class="col-md-6">
+                <div class="form_container">
+                  <span>Número da rua</span>
+                  <input type="text" class="form-control" formControlName="numberStreet" mask="9*"/>
+                  <span>Rua</span>
+                  <input type="text" class="form-control" formControlName="street"/>
+                  <span>Cidade</span>
+                  <input type="text" class="form-control" formControlName="city"/>
+                  <span>Estado</span>
+                  <input type="text" class="form-control" formControlName="state"/>
+                </div>
               </div>
-            </div>
-          }
+            }
         </div>
       </form>
       <div class="btn-box">
-        <button>
+        <button (click)="onCreate()">
           Cadastre agora!
         </button>
       </div>

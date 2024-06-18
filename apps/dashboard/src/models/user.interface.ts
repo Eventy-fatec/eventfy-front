@@ -9,3 +9,8 @@ export interface IUser {
 }
 
 export interface ICreateUser extends Omit<IUser, 'id'> {}
+
+export interface ILoginUser {
+  cpf: string;
+  password: string;
+}

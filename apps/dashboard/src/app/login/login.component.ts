@@ -5,6 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, Subject, combineLatest, takeUntil } from 'rxjs';
+import { MessageService } from 'primeng/api';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   standalone: true,
@@ -12,9 +14,12 @@ import { Observable, Subject, combineLatest, takeUntil } from 'rxjs';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit, OnDestroy{
-  private UserService = inject(UserService);
+  private userService = inject(UserService);
+  private loginService = inject(LoginService);
+  private messageService = inject(MessageService);
   private fb = inject(FormBuilder);
   private route = inject(Router);
 
@@ -41,12 +46,25 @@ export class LoginComponent implements OnInit, OnDestroy{
   }
 
   public onLogin(): void {
-    console.log(this.cpf, this.password);
-
+    this.loginService.createUser({
+      cpf: this.cpf,
+      password: this.password
+    }).subscribe({
+      next: () => {
+        this.loginService.setUserLogged(true);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Usuário logado com sucesso' });
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro ao logar' });
+      },
+      complete: () => {
+        this.route.navigate(['home']);
+      }
+    })
   }
 
   public onSignUp(): void {
-    this.UserService.createUser({
+    this.userService.createUser({
       name: this.form.get('name')?.value,
       email: this.form.get('email')?.value,
       password: this.form.get('password')?.value,
@@ -55,10 +73,10 @@ export class LoginComponent implements OnInit, OnDestroy{
       birthdate: this.form.get('birthday')?.value
     }).subscribe({
       next: () => {
-        alert('User created');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Usuário criado com sucesso' });
       },
       error: () => {
-        alert('User not created');
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro ao criar o usuário' });
       }
     })
   }
