@@ -16,10 +16,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item">
-                <a class="nav-link" href="#events">Events</a>
+                <a
+                  class="nav-link"
+                  [routerLink]="['/home']"
+                  fragment="events"
+                >Events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#register">Register events</a>
+                <a class="nav-link"
+                [routerLink]="['/home']"
+                  fragment="register">Register events</a>
               </li>
             </ul>
             <div class="user_option">
@@ -27,16 +33,22 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="#">
-                
+
               </a>
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-                <button (click)="goToLogin()" class="order_online">
+                @if (hasUser){
+                  <button  class="order_online">
+                    My tickets
+                  </button>
+                } @else {
+                  <button (click)="goToLogin()" class="order_online">
                   Sign In/Sign Up
                 </button>
+              }
             </div>
           </div>
         </nav>
@@ -104,230 +116,7 @@
                       19/07/2024
                     </h6>
                     <a href="">
-                      
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all jun">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious jun
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$15,00
-                    </h6>
-                    <h6>
-                      25/06/2024
-                    </h6>
-                    <a href="">
-                     
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all jul">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    No Ritmo Da Písta
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$25,00
-                    </h6>
-                    <h6>
-                      31/07/2024
-                    </h6>
-                    <a href="">
-                     
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all ago">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious ago
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$18,00
-                    </h6>
-                    <h6>
-                      09/08/2024
-                    </h6>
-                    <a href="">
-                     
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all set">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    French set
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$10,00
-                    </h6>
-                    <h6>
-                      03/09/2024
-                    </h6>
-                    <a href="">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all jul">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious jul
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$15,00
-                    </h6>
-                    <h6>
-                      10/07/2024
-                    </h6>
-                    <a href="">
-                    
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all jun">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Tasty jun
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$12,00
-                    </h6>
-                    <h6>
-                      27/06/2024
-                    </h6>
-                    <a href="">
-                     
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all jun">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Tasty jun
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$14,00
-                    </h6>
-                    <h6>
-                      19/06/2024
-                    </h6>
-                    <a href="">
-                      
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all ago">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious ago
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      R$10,00
-                    </h6>
-                    <h6>
-                      13/08/2024
-                    </h6>
-                    <a href="">
-                     
+
                     </a>
                   </div>
                 </div>
@@ -337,65 +126,61 @@
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
-          Veja Mais
-        </a>
+        <button>
+          See more
+        </button>
       </div>
     </div>
   </section>
   <!-- /Events Section-->
   <!-- Register Section -->
-  <section class="book_section layout_padding" id="register">
-    <div class="container">
+  <section class="book_section layout_padding">
+    <div class="container" id="register">
       <div class="heading_container">
         <h2>
           Register your event
         </h2>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6">
+              <div class="form_container">
                 <span>Name</span>
-                <input type="text" class="form-control"/>
-              </div>
-              <div>
+                <input type="text" class="form-control" formControlName="title"/>
                 <span>Description</span>
-                <input type="text" class="form-control"/>
-              </div>
-              <div>
+                <input type="text" class="form-control" formControlName="description"/>
                 <span>CEP</span>
-                <input type="text" class="form-control"/>
+                <input type="text" class="form-control" formControlName="cep"/>
+                <span>Start date</span>
+                <input type="date" class="form-control" formControlName="startDate"/>
+                <span>End date</span>
+                <input type="date" class="form-control" formControlName="endDate"/>
+                <span>Start time</span>
+                <input type="text" class="form-control" formControlName="startTime"/>
+                <span>End time</span>
+                <input type="text" class="form-control" formControlName="endTime"/>
               </div>
-              <div>
+          </div>
+          @if(form.value.cep != ''){
+            <div class="col-md-6">
+              <div class="form_container">
                 <span>Number street</span>
-                <input type="text" class="form-control" />
-              </div>
-              <div>
+                <input type="text" class="form-control" formControlName="numberStreet"/>
                 <span>Street</span>
-                <input type="text" class="form-control" />
-              </div>
-              <div>
+                <input type="text" class="form-control" formControlName="street"/>
                 <span>City</span>
-                <input type="text" class="form-control"/>
+                <input type="text" class="form-control" formControlName="city"/>
+                <span>State</span>
+                <input type="text" class="form-control" formControlName="state"/>
               </div>
-              <div>
-                <span>Date</span>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                 Regsiter now!
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
+          }
         </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-          </div>
-        </div>
+      </form>
+      <div class="btn-box">
+        <button>
+          Regsiter now!
+        </button>
       </div>
     </div>
   </section>

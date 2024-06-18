@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from './../../services/user.service';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
@@ -13,6 +14,10 @@ import { Observable, Subject, combineLatest, takeUntil } from 'rxjs';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit, OnDestroy{
+  private UserService = inject(UserService);
+  private fb = inject(FormBuilder);
+  private route = inject(Router);
+
   public isActive = false;
 
   public isPasswordEqual = false
@@ -24,11 +29,6 @@ export class LoginComponent implements OnInit, OnDestroy{
   public cpf = '';
 
   public password = '';
-
-  constructor(
-    private fb: FormBuilder,
-    private route: Router,
-  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -46,7 +46,21 @@ export class LoginComponent implements OnInit, OnDestroy{
   }
 
   public onSignUp(): void {
-    console.log('asdsa');
+    this.UserService.createUser({
+      name: this.form.get('name')?.value,
+      email: this.form.get('email')?.value,
+      password: this.form.get('password')?.value,
+      cpf: this.form.get('cpf')?.value,
+      cellphone: this.form.get('cellphone')?.value,
+      birthdate: this.form.get('birthday')?.value
+    }).subscribe({
+      next: () => {
+        alert('User created');
+      },
+      error: () => {
+        alert('User not created');
+      }
+    })
   }
 
   public goToHome(): void {
