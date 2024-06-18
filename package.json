@@ -2,7 +2,9 @@
   "name": "@eventfy-front/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "npx nx build dashboard --prod"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.0.0",
